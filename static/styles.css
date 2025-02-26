@@ -1,0 +1,263 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --light-bg: #f8f9fa;
+    --dark-bg: #212529;
+    --text-color: #333;
+    --light-text: #f8f9fa;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.app-header h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-header p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.app-card {
+    border-radius: 12px;
+    border: none;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.app-card:hover {
+    box-shadow: var(--hover-shadow);
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+    border-bottom: none;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+#text-input {
+    font-size: 1.1rem;
+    min-height: 120px;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #ced4da;
+    transition: border-color 0.2s ease;
+    resize: vertical;
+}
+
+#text-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+}
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    height: auto;
+}
+
+.prediction-card {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    background-color: white;
+}
+
+.prediction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+    border-color: var(--accent-color);
+}
+
+.prediction-card.selected {
+    border-color: var(--primary-color);
+    background-color: rgba(67, 97, 238, 0.05);
+}
+
+.confidence-bar {
+    height: 6px;
+    background-color: var(--accent-color);
+    margin-top: 8px;
+    border-radius: 3px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.spinner-border {
+    margin-right: 8px;
+}
+
+#results-container {
+    min-height: 100px;
+}
+
+.result-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.result-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.completed-sentence {
+    background-color: rgba(72, 149, 239, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.prediction-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    margin-right: 8px;
+}
+
+.loading-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .app-header h1 {
+        font-size: 2rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .app-header p {
+        max-width: 100%;
+    }
+}
+
+/* Dark mode toggle styles */
+.mode-toggle {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Animation for predictions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.prediction-card {
+    animation: fadeIn 0.3s ease;
+    animation-fill-mode: both;
+}
+
+.prediction-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.prediction-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.prediction-card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.prediction-card:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.prediction-card:nth-child(5) {
+    animation-delay: 0.25s;
+}

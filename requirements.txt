@@ -1,0 +1,6 @@
+# requirements.txt - Dependencies for the Flask Next Word Prediction app
+
+flask==2.3.3
+transformers==4.36.0
+torch==2.1.0
+gunicorn==21.2.0
